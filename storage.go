@@ -17,9 +17,9 @@ func NewMemoryStore() *MemoryStore {
 	}
 }
 
-func (s *MemoryStore) Push(b []byte) error {
+func (s *MemoryStore) Push(b []byte) (int, error) {
 	s.data = append(s.data, b)
-	return nil
+	return len(s.data) - 1, nil
 }
 
 func (s *MemoryStore) Fetch(offset int) ([]byte, error) {
